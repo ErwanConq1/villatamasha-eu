@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Villa Tamasha — Menorcan Life</title>
+<meta name="description" content="Villa de charme à louer sur l'île de Minorque. Piscine privée, terrasse au cœur de la nature. Réservation directe." />
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/icon-512.png" />
+
+<!-- Open Graph (partages réseaux sociaux) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Villa Tamasha — Menorcan Life" />
+<meta property="og:description" content="Villa de charme à louer sur l'île de Minorque. Piscine privée, terrasse au cœur de la nature." />
+<meta property="og:image" content="https://villatamasha.eu/assets/villa-hero.jpg" />
+<meta property="og:url" content="https://villatamasha.eu" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Polices Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --navy: #1F4E79;
+    --navy-dark: #15375a;
+    --cream: #E8D5B7;
+    --white: #FFFFFF;
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    font-family: 'Lato', -apple-system, sans-serif;
+    color: #111;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+    background-image: url('assets/villa-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Triple couche : vignette radiale (sombre au centre derrière le texte) +
+       dégradé vertical (sombre en bas) + voile uniforme pour casser les blancs */
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.0) 100%),
+      linear-gradient(180deg,
+        rgba(31, 78, 121, 0.50) 0%,
+        rgba(0, 0, 0, 0.20) 35%,
+        rgba(0, 0, 0, 0.30) 60%,
+        rgba(31, 78, 121, 0.90) 100%),
+      linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Top nav */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .nav .logo {
+    height: 60px;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  }
+  .nav-right {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .lang-switch {
+    display: flex;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    padding: 4px;
+  }
+  .lang-switch button {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .lang-switch button:hover { color: white; }
+  .lang-switch button.active {
+    background: white;
+    color: var(--navy);
+  }
+
+  /* Bloc central */
+  .hero-main {
+    text-align: center;
+    color: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+  }
+  .hero-eyebrow {
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--cream);
+    margin: 0 0 12px;
+    opacity: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(0, 0, 0, 0.6);
+  }
+  .hero-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(42px, 8vw, 80px);
+    font-weight: 600;
+    color: white;
+    margin: 0 0 16px;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7), 0 2px 6px rgba(0, 0, 0, 0.6);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .hero-subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 500;
+    color: white;
+    margin: 0 0 40px;
+    opacity: 1;
+    text-shadow: 0 3px 16px rgba(0, 0, 0, 0.7), 0 1px 4px rgba(0, 0, 0, 0.6);
+  }
+  .hero-tagline {
+    font-size: clamp(15px, 2vw, 18px);
+    color: white;
+    max-width: 580px;
+    margin: 0 auto 48px;
+    opacity: 1;
+    line-height: 1.6;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.7);
+    font-weight: 400;
+  }
+
+  /* CTA */
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    color: var(--navy);
+    padding: 18px 40px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  }
+  .cta-primary svg { width: 18px; height: 18px; }
+
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: color 0.15s;
+  }
+  .cta-secondary:hover { color: white; }
+  .cta-secondary .badge {
+    background: var(--cream);
+    color: var(--navy);
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Quick info chips */
+  .info-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 56px;
+  }
+  .chip {
+    background: rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Footer dans le hero (bottom) */
+  .hero-footer {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    text-align: center;
+    padding-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  }
+  .hero-footer .gecko {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 640px) {
+    .hero-content { padding: 20px 16px; }
+    .nav .logo { height: 44px; }
+    .info-chips { margin-top: 32px; }
+    .hero-footer { font-size: 11px; flex-direction: column; }
+    .cta-primary { padding: 16px 32px; font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+
+    <!-- Top nav : logo + sélecteur de langue -->
+    <nav class="nav">
+      <img src="assets/logo.png" alt="Villa Tamasha — Menorcan Life" class="logo" />
+      <div class="nav-right">
+        <div class="lang-switch" role="group" aria-label="Choisir la langue">
+          <button data-lang="fr" class="active" onclick="setLang('fr')">FR</button>
+          <button data-lang="en" onclick="setLang('en')">EN</button>
+          <button data-lang="es" onclick="setLang('es')">ES</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Bloc principal centré -->
+    <div class="hero-main">
+      <p class="hero-eyebrow" data-i18n="eyebrow">Villa de charme · Minorque</p>
+      <h1 class="hero-title">Villa Tamasha</h1>
+      <p class="hero-subtitle" data-i18n="subtitle">Menorcan Life</p>
+      <p class="hero-tagline" data-i18n="tagline">
+        Une maison méditerranéenne au cœur de l'île. Piscine privée,
+        terrasse à l'ombre des pins, jardin d'agapanthes. Pour vivre
+        Minorque comme une famille de l'île.
+      </p>
+
+      <div class="cta-group">
+        <a href="https://villatamasha-menorca.lodgify.com/" target="_blank" rel="noopener" class="cta-primary">
+          <span data-i18n="cta_book">Réserver mon séjour</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+        <a href="#" class="cta-secondary" onclick="event.preventDefault(); alert(translations[currentLang].app_soon);">
+          <span data-i18n="cta_app">Télécharger l'application</span>
+          <span class="badge" data-i18n="badge_soon">Bientôt</span>
+        </a>
+      </div>
+
+      <div class="info-chips">
+        <span class="chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-i18n="chip_location">Es Mercadal · Minorque</span>
+        </span>
+        <span class="chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span data-i18n="chip_capacity">Jusqu'à 8 personnes</span>
+        </span>
+        <span class="chip">
+          🏊 <span data-i18n="chip_pool">Piscine privée</span>
+        </span>
+        <span class="chip">
+          🌳 <span data-i18n="chip_garden">Jardin et terrasse</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Footer minimal -->
+    <footer class="hero-footer">
+      <span class="gecko">Villa Tamasha · Menorcan Life</span>
+    </footer>
+
+  </div>
+</section>
+
+<script>
+const translations = {
+  fr: {
+    eyebrow: "Villa de charme · Minorque",
+    subtitle: "Menorcan Life",
+    tagline: "Une maison méditerranéenne au cœur de l'île. Piscine privée, terrasse à l'ombre des pins, jardin d'agapanthes. Pour vivre Minorque comme une famille de l'île.",
+    cta_book: "Réserver mon séjour",
+    cta_app: "Télécharger l'application",
+    badge_soon: "Bientôt",
+    chip_location: "Es Mercadal · Minorque",
+    chip_capacity: "Jusqu'à 8 personnes",
+    chip_pool: "Piscine privée",
+    chip_garden: "Jardin et terrasse",
+    app_soon: "L'application Tamasha sera bientôt disponible. Vous serez prévenu par email lors du lancement."
+  },
+  en: {
+    eyebrow: "Charming villa · Menorca",
+    subtitle: "Menorcan Life",
+    tagline: "A Mediterranean home at the heart of the island. Private pool, terrace shaded by pines, garden of agapanthus flowers. Live Menorca like a local family.",
+    cta_book: "Book your stay",
+    cta_app: "Download the app",
+    badge_soon: "Soon",
+    chip_location: "Es Mercadal · Menorca",
+    chip_capacity: "Up to 8 guests",
+    chip_pool: "Private pool",
+    chip_garden: "Garden and terrace",
+    app_soon: "The Tamasha app will be available soon. You'll be notified by email at launch."
+  },
+  es: {
+    eyebrow: "Villa con encanto · Menorca",
+    subtitle: "Menorcan Life",
+    tagline: "Una casa mediterránea en el corazón de la isla. Piscina privada, terraza a la sombra de los pinos, jardín de agapantos. Para vivir Menorca como una familia local.",
+    cta_book: "Reservar mi estancia",
+    cta_app: "Descargar la aplicación",
+    badge_soon: "Pronto",
+    chip_location: "Es Mercadal · Menorca",
+    chip_capacity: "Hasta 8 personas",
+    chip_pool: "Piscina privada",
+    chip_garden: "Jardín y terraza",
+    app_soon: "La aplicación Tamasha estará disponible próximamente. Recibirá un email cuando se lance."
+  }
+};
+
+let currentLang = 'fr';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  try { localStorage.setItem('tamasha_lang', lang); } catch(e) {}
+}
+
+// Détection initiale
+(function() {
+  let initial = 'fr';
+  try {
+    const saved = localStorage.getItem('tamasha_lang');
+    if (saved && translations[saved]) {
+      initial = saved;
+    } else {
+      const browserLang = (navigator.language || 'fr').slice(0, 2);
+      if (translations[browserLang]) initial = browserLang;
+    }
+  } catch(e) {}
+  setLang(initial);
+})();
+</script>
+
+</body>
+</html>
